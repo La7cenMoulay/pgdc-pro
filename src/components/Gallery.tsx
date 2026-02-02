@@ -33,7 +33,7 @@ export function Gallery() {
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '24px' }}>
-                    {filteredItems.map((item, i) => (
+                    {filteredItems.map((item) => (
                         <motion.div
                             key={item.id}
                             initial={{ opacity: 0, y: 20 }}

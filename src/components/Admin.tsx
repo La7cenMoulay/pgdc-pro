@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore, Member, GalleryItem } from '../store';
-import { UploadCloud, Plus, Image as ImageIcon, Users } from 'lucide-react';
+import { Image as ImageIcon, Users } from 'lucide-react';
 import { toast } from 'sonner';
 
 // Image compression utility
@@ -71,7 +71,7 @@ export function AdminDashboard() {
     const [galleryCategory, setGalleryCategory] = useState<GalleryItem['category']>('Event');
     const [galleryImages, setGalleryImages] = useState<string[]>([]);
 
-    const [isDragOver, setIsDragOver] = useState(false);
+    const [, setIsDragOver] = useState(false);
 
     // Drag & Drop Handlers
     const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setIsDragOver(true); };
