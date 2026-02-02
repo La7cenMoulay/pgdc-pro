@@ -194,7 +194,7 @@ export function AdminDashboard() {
                     {/* Settings Panel */}
                     <div className="glass-panel" style={{ padding: '30px', gridColumn: 'span 1' }}>
                         <h3 style={{ marginBottom: '20px' }}>Settings</h3>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
                             <span>Show Anniversary</span>
                             <input
                                 type="checkbox"
@@ -203,6 +203,40 @@ export function AdminDashboard() {
                                 style={{ width: '20px', height: '20px' }}
                             />
                         </div>
+                        <button
+                            className="btn"
+                            style={{ width: '100%', marginTop: '10px', fontSize: '0.9rem', background: 'var(--primary)', color: 'white' }}
+                            onClick={async () => {
+                                try {
+                                    const response = await fetch('http://localhost:3500/sync', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify(state)
+                                    });
+                                    if (response.ok) toast.success('Data pushed to Codebase! 🚀');
+                                    else toast.error('Sync Server not running.');
+                                } catch (e) {
+                                    toast.error('Could not connect to Sync Server.');
+                                }
+                            }}
+                        >
+                            ⚡ Fast Sync to GitHub
+                        </button>
+                        <button
+                            className="btn btn-outline"
+                            style={{ width: '100%', marginTop: '10px', fontSize: '0.7rem', opacity: 0.6 }}
+                            onClick={() => {
+                                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state));
+                                const downloadAnchorNode = document.createElement('a');
+                                downloadAnchorNode.setAttribute("href", dataStr);
+                                downloadAnchorNode.setAttribute("download", "pgdc_backup.json");
+                                document.body.appendChild(downloadAnchorNode);
+                                downloadAnchorNode.click();
+                                downloadAnchorNode.remove();
+                            }}
+                        >
+                            Emergency Backup JSON
+                        </button>
                     </div>
 
                     {/* Dynamic Content Panel */}

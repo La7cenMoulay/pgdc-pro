@@ -1,0 +1,89 @@
+{
+    "theme": "dark",
+    "hero": {
+        "title": "Programming & Graphic Design Club",
+        "subtitle": "Where Creativity Meets Logic",
+        "ctaText": "Join Our Community"
+    },
+    "about": {
+        "title": "About PGDC",
+        "description": "We are a community dedicated to empowering students in the fields of Computer Science and Digital Arts.",
+        "features": [
+            {
+                "icon": "code",
+                "title": "Programming",
+                "text": "Master algorithms, web dev, and software engineering."
+            },
+            {
+                "icon": "palette",
+                "title": "Graphic Design",
+                "text": "Explore UI/UX, branding, and digital illustration."
+            },
+            {
+                "icon": "users",
+                "title": "Community",
+                "text": "Network with like-minded innovators."
+            },
+            {
+                "icon": "zap",
+                "title": "Innovation",
+                "text": "Turn ideas into reality with our tech stack."
+            }
+        ]
+    },
+    "anniversary": {
+        "isVisible": true,
+        "title": "Our 5th Anniversary!",
+        "achievements": [
+            {
+                "year": "2021",
+                "title": "Founded",
+                "description": "Started with 10 members."
+            },
+            {
+                "year": "2023",
+                "title": "National Award",
+                "description": "Best Student Club."
+            }
+        ]
+    },
+    "gallery": [
+        {
+            "id": 1770069742253,
+            "title": "افتتاح نادي البرمجة والتصميم الغرافيكي",
+            "date": "2022-02-03",
+            "category": "Event",
+            "image": "data:image/jpeg;base64,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"
+        }
+    ],
+    "members": [
+        {
+            "id": 1,
+            "name": "Sarah Ahmed",
+            "role": "President",
+            "category": "Board",
+            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah"
+        },
+        {
+            "id": 2,
+            "name": "Mohamed Ali",
+            "role": "Vice President",
+            "category": "Board",
+            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Mohamed"
+        },
+        {
+            "id": 3,
+            "name": "Lina Othman",
+            "role": "Head of Design",
+            "category": "Design",
+            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lina"
+        },
+        {
+            "id": 4,
+            "name": "Omar Khader",
+            "role": "Head of Tech",
+            "category": "Tech",
+            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar"
+        }
+    ]
+}

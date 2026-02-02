@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import initialData from './initialData.json';
 
 // --- Types ---
 export type Theme = 'dark' | 'light';
@@ -48,42 +49,7 @@ interface State {
 }
 
 // --- Initial State ---
-const DEFAULT_STATE: State = {
-    theme: 'dark',
-    hero: {
-        title: "Programming & Graphic Design Club",
-        subtitle: "Where Creativity Meets Logic",
-        ctaText: "Join Our Community",
-    },
-    about: {
-        title: "About PGDC",
-        description: "We are a community dedicated to empowering students in the fields of Computer Science and Digital Arts.",
-        features: [
-            { icon: "code", title: "Programming", text: "Master algorithms, web dev, and software engineering." },
-            { icon: "palette", title: "Graphic Design", text: "Explore UI/UX, branding, and digital illustration." },
-            { icon: "users", title: "Community", text: "Network with like-minded innovators." },
-            { icon: "zap", title: "Innovation", text: "Turn ideas into reality with our tech stack." }
-        ]
-    },
-    anniversary: {
-        isVisible: false,
-        title: "Our 5th Anniversary!",
-        achievements: [
-            { year: "2021", title: "Founded", description: "Started with 10 members." },
-            { year: "2023", title: "National Award", description: "Best Student Club." },
-        ]
-    },
-    gallery: [
-        { id: 1, title: "Hackathon 2023", date: "2023-11-15", category: "Event", image: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=800" },
-        { id: 2, title: "Best Design Award", date: "2023-09-20", category: "Achievement", image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" }
-    ],
-    members: [
-        { id: 1, name: "Sarah Ahmed", role: "President", category: "Board", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" },
-        { id: 2, name: "Mohamed Ali", role: "Vice President", category: "Board", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mohamed" },
-        { id: 3, name: "Lina Othman", role: "Head of Design", category: "Design", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Lina" },
-        { id: 4, name: "Omar Khader", role: "Head of Tech", category: "Tech", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar" }
-    ]
-};
+const DEFAULT_STATE: State = initialData as State;
 
 // --- Actions ---
 type Action =
