@@ -11,7 +11,7 @@ export function Hero() {
             alignItems: 'center',
             justifyContent: 'center',
             textAlign: 'center',
-            paddingTop: '80px'
+            padding: '120px 20px 80px'
         }}>
             <div className="bg-mesh">
                 <div className="blob blob-1"></div>
@@ -21,11 +21,14 @@ export function Hero() {
 
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 <h1 className="hero-title animate-fade-in">{hero.title}</h1>
-                <p className="animate-fade-in" style={{
-                    fontSize: '1.5rem',
+                <p className="animate-fade-in hero-subtitle" style={{
+                    fontSize: 'clamp(1.1rem, 3vw, 1.5rem)',
                     color: 'var(--text-muted)',
                     margin: '20px 0 40px',
-                    animationDelay: '0.2s'
+                    animationDelay: '0.2s',
+                    maxWidth: '800px',
+                    marginLeft: 'auto',
+                    marginRight: 'auto'
                 }}>
                     {hero.subtitle}
                 </p>

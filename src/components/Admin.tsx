@@ -174,25 +174,27 @@ export function AdminDashboard() {
                 <h1 className="section-title">Admin Dashboard</h1>
 
                 {/* Tab Navigation */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px', gap: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px', gap: '10px', flexWrap: 'wrap' }}>
                     <button
                         className={`btn ${activeTab === 'members' ? '' : 'btn-outline'}`}
                         onClick={() => setActiveTab('members')}
+                        style={{ fontSize: '0.9rem', padding: '12px 20px' }}
                     >
-                        <Users size={18} /> Manage Members
+                        <Users size={18} /> Members
                     </button>
                     <button
                         className={`btn ${activeTab === 'gallery' ? '' : 'btn-outline'}`}
                         onClick={() => setActiveTab('gallery')}
+                        style={{ fontSize: '0.9rem', padding: '12px 20px' }}
                     >
-                        <ImageIcon size={18} /> Manage Gallery
+                        <ImageIcon size={18} /> Gallery
                     </button>
                 </div>
 
-                <div className="grid-cols-3" style={{ alignItems: 'start' }}>
+                <div className="admin-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '30px', alignItems: 'start' }}>
 
                     {/* Settings Panel */}
-                    <div className="glass-panel" style={{ padding: '30px', gridColumn: 'span 1' }}>
+                    <div className="glass-panel" style={{ padding: '30px' }}>
                         <h3 style={{ marginBottom: '20px' }}>Settings</h3>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
                             <span>Show Anniversary</span>
@@ -240,12 +242,12 @@ export function AdminDashboard() {
                     </div>
 
                     {/* Dynamic Content Panel */}
-                    <div className="glass-panel" style={{ padding: '30px', gridColumn: 'span 2' }}>
+                    <div className="glass-panel" style={{ padding: '30px' }}>
 
                         {activeTab === 'members' ? (
                             <div>
                                 <h3>Add New Member</h3>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '20px' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px', marginTop: '20px' }}>
                                     <div>
                                         <input className="input" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
                                         <input className="input" placeholder="Role" value={role} onChange={e => setRole(e.target.value)} />
@@ -306,7 +308,7 @@ export function AdminDashboard() {
                         ) : (
                             <div>
                                 <h3>Add Gallery Item</h3>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '20px' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px', marginTop: '20px' }}>
                                     <div>
                                         <input className="input" placeholder="Event Title" value={galleryTitle} onChange={e => setGalleryTitle(e.target.value)} />
                                         <input className="input" type="date" value={galleryDate} onChange={e => setGalleryDate(e.target.value)} />

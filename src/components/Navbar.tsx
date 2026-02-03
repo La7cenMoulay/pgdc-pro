@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from '../store';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
 export function Navbar() {
     const { state, dispatch } = useStore();
     const { theme } = state;
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     // Scroll effect logic
     useEffect(() => {
@@ -19,26 +20,44 @@ export function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <nav className="navbar">
             <div className="container nav-content">
-                <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <img src="/logo.jpg" alt="PGDC Logo" style={{ width: '40px', height: '40px', borderRadius: '8px' }} />
+                <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }} onClick={closeMenu}>
+                    <img src="./logo.jpg" alt="PGDC Logo" style={{ width: '40px', height: '40px', borderRadius: '8px' }} />
                     <span>PGDC</span>
                 </a>
-                <div className="nav-links">
-                    <a href="#" className="nav-link">Home</a>
-                    <a href="#about" className="nav-link">About</a>
-                    <a href="#members" className="nav-link">Members</a>
-                    <a href="#contact" className="nav-link">Contact</a>
 
-                    <button
-                        className="btn btn-outline"
-                        style={{ padding: '8px', borderRadius: '50%', display: 'flex' }}
-                        onClick={() => dispatch({ type: 'TOGGLE_THEME' })}
-                    >
-                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                    </button>
+                <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
+                    {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
+
+                <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+                    <a href="#" className="nav-link" onClick={closeMenu}>Home</a>
+                    <a href="#about" className="nav-link" onClick={closeMenu}>About</a>
+                    <a href="#members" className="nav-link" onClick={closeMenu}>Members</a>
+                    <a href="#contact" className="nav-link" onClick={closeMenu}>Contact</a>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                        <button
+                            className="btn btn-outline"
+                            style={{ padding: '8px', borderRadius: '50%', display: 'flex' }}
+                            onClick={() => {
+                                dispatch({ type: 'TOGGLE_THEME' });
+                                if (window.innerWidth <= 768) closeMenu();
+                            }}
+                        >
+                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
