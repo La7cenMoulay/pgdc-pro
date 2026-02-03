@@ -88,7 +88,19 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem('pgdc_pro_state');
     // deeply merge default state to ensure new keys (like gallery) exist if missing in saved state
     const parsed = saved ? JSON.parse(saved) : {};
-    const initialState = { ...DEFAULT_STATE, ...parsed, gallery: parsed.gallery || DEFAULT_STATE.gallery };
+
+    // Deeply merge and prioritize newer codebase data for lists
+    const initialState = {
+        ...DEFAULT_STATE,
+        ...parsed,
+        // If the codebase (initialData) has more members or gallery items, use those instead of potentially stale local storage
+        members: (DEFAULT_STATE.members.length > (parsed.members?.length || 0))
+            ? DEFAULT_STATE.members
+            : (parsed.members || DEFAULT_STATE.members),
+        gallery: (DEFAULT_STATE.gallery.length > (parsed.gallery?.length || 0))
+            ? DEFAULT_STATE.gallery
+            : (parsed.gallery || DEFAULT_STATE.gallery)
+    };
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
